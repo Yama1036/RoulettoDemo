@@ -187,7 +187,7 @@ public class FrmPlay extends javax.swing.JFrame {
         int money = Integer.parseInt(txtmoney.getText());
         int dealer = Integer.parseInt(lbldealer.getText());
         int you = Integer.parseInt(lblyou.getText());
-        
+        //get everything first
         
         
         
