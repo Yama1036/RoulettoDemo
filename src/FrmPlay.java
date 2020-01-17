@@ -226,8 +226,58 @@ public class FrmPlay extends javax.swing.JFrame {
         int d = rand.nextInt(36);
         lblbet.setText(""+ d +"");
         
+                
+        //Find out how moch does dealer bet.
+        Random amount = new Random();
+        int dm = rand.nextInt(dealer/2); 
+        //Allow the dealer to bet on half the full amount so that the full amount is not bet.
+        lblmoney.setText(""+ dm +"");
+        int nowD = (dealer - dm);
+        lbldealer.setText(""+ nowD +"");
         
         
+        int nowP = (you - money);
+        lblyou.setText(""+ nowP +"");
+        
+        
+        if (hit == bet)
+        {
+            int winmoney = (bet / nowP)* 100;
+            nowP = nowP + winmoney + dm; 
+         
+        }
+        
+        if (hit != d)
+        {
+            int winmoney = (dm / nowP)* 100;
+            nowD = nowD + winmoney + bet; 
+        }
+        
+        
+        
+        if (nowP == 20000)
+        {
+            this.setVisible(false);
+            new Frmwin().setVisible(true);
+        }
+        
+        else if (nowD == 0)
+        {
+            this.setVisible(false);
+            new Frmwin().setVisible(true);
+        }   
+        
+        else if (nowD == 20000)
+        {
+            this.setVisible(false);
+            new Frmlose().setVisible(true);
+        }
+        
+        else if (nowP == 0)
+        {
+            this.setVisible(false);
+            new Frmlose().setVisible(true);
+        }
     }//GEN-LAST:event_btnstartActionPerformed
 
     /**
