@@ -120,12 +120,11 @@ public class FrmPlay extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel4)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jLabel7)
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jLabel9)
-                                                        .addComponent(jLabel8)
-                                                        .addComponent(jLabel10)))
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel9)
+                                                    .addComponent(jLabel8)
+                                                    .addComponent(jLabel10)
+                                                    .addComponent(jLabel7))
                                                 .addGap(18, 18, 18)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(lblyou)
@@ -182,21 +181,17 @@ public class FrmPlay extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
                             .addComponent(lblmoney))))
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(lbldealer))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnstart)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel8)
-                                .addComponent(lblyou)))
-                        .addGap(0, 20, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(lbldealer))))
-                .addGap(18, 18, 18))
+                    .addComponent(btnstart)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel8)
+                        .addComponent(lblyou)))
+                .addGap(18, 31, Short.MAX_VALUE))
         );
 
         pack();
@@ -229,8 +224,7 @@ public class FrmPlay extends javax.swing.JFrame {
                 
         //Find out how moch does dealer bet.
         Random amount = new Random();
-        int dm = rand.nextInt(dealer/2); 
-        //Allow the dealer to bet on half the full amount so that the full amount is not bet.
+        int dm = rand.nextInt(dealer); 
         lblmoney.setText(""+ dm +"");
         int nowD = (dealer - dm);
         lbldealer.setText(""+ nowD +"");
@@ -244,30 +238,29 @@ public class FrmPlay extends javax.swing.JFrame {
         {
             int winmoney = (bet / nowP)* 100;
             nowP = nowP + winmoney + dm; 
-         
         }
         
         if (hit != d)
         {
             int winmoney = (dm / nowP)* 100;
-            nowD = nowD + winmoney + bet; 
+            nowD = nowD + winmoney + bet;   
         }
         
         
         
-        if (nowP == 20000)
+        if (nowP == 11000)
         {
             this.setVisible(false);
             new Frmwin().setVisible(true);
         }
         
-        else if (nowD == 0)
+        else if (nowD == 1)
         {
             this.setVisible(false);
             new Frmwin().setVisible(true);
         }   
         
-        else if (nowD == 20000)
+        else if (nowD == 11000)
         {
             this.setVisible(false);
             new Frmlose().setVisible(true);
